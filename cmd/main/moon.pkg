@@ -1,0 +1,7 @@
+// import {
+//   "sennenki/ignore" @lib,
+// }
+
+options(
+  "is-main": true,
+)
