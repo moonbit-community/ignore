@@ -1,0 +1,62 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "sennenki/ignore"
+
+import {
+  "moonbitlang/x/fs",
+}
+
+// Values
+pub fn default_options() -> IgnoreOptions
+
+pub fn ignore(options? : IgnoreOptions) -> Ignore
+
+pub fn is_path_valid(String) -> Bool
+
+pub fn options(allow_relative_paths? : Bool) -> IgnoreOptions
+
+// Errors
+
+// Types and methods
+pub struct Ignore {
+  rules : Array[IgnoreRule]
+  strict_path_check : Bool
+}
+pub fn Ignore::add(Self, String) -> Self
+pub fn Ignore::add_file(Self, String) -> Self raise @fs.IOError
+pub fn Ignore::add_lines(Self, String) -> Self
+pub fn Ignore::add_patterns(Self, Array[String]) -> Self
+pub fn Ignore::check_ignore(Self, String) -> MatchResult
+pub fn Ignore::filter(Self, Array[String]) -> Array[String]
+pub fn Ignore::ignores(Self, String) -> Bool
+pub fn Ignore::match_path(Self, String) -> MatchResult
+
+pub struct IgnoreOptions {
+  allow_relative_paths : Bool
+}
+pub impl Eq for IgnoreOptions
+pub impl Show for IgnoreOptions
+
+pub struct IgnoreRule {
+  raw : String
+  pattern : String
+  negative : Bool
+  directory_only : Bool
+  anchored : Bool
+  has_slash : Bool
+  segments : Array[String]
+}
+pub impl Eq for IgnoreRule
+pub impl Show for IgnoreRule
+
+pub struct MatchResult {
+  ignored : Bool
+  unignored : Bool
+  rule : IgnoreRule?
+}
+pub impl Eq for MatchResult
+pub impl Show for MatchResult
+
+// Type aliases
+
+// Traits
+
