@@ -1,15 +1,17 @@
 ///|
-pub fn default_options() -> IgnoreOptions {
-  { allow_relative_paths: false }
-}
-
-///|
-pub fn options(allow_relative_paths? : Bool = false) -> IgnoreOptions {
+pub fn IgnoreOptions::IgnoreOptions(
+  allow_relative_paths? : Bool = false,
+) -> IgnoreOptions {
   { allow_relative_paths, }
 }
 
 ///|
-pub fn ignore(options? : IgnoreOptions = default_options()) -> Ignore {
+pub impl Default for IgnoreOptions with fn default() {
+  IgnoreOptions()
+}
+
+///|
+pub fn Ignore::Ignore(options? : IgnoreOptions = Default::default()) -> Ignore {
   { rules: [], strict_path_check: !options.allow_relative_paths }
 }
 
