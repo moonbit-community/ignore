@@ -20,7 +20,7 @@ fn path_to_segments(pathname : String) -> Array[String] {
   }
 
   let text = if ends_with_slash(pathname) {
-    pathname[:pathname.length() - 1].to_string()
+    pathname[:pathname.length() - 1].to_owned()
   } else {
     pathname
   }
@@ -33,13 +33,13 @@ fn path_to_segments(pathname : String) -> Array[String] {
   for i in 0..<text.length() {
     if text.code_unit_at(i) == '/'.to_int().to_uint16() {
       if i > start {
-        segments.push(text[start:i].to_string())
+        segments.push(text[start:i].to_owned())
       }
       start = i + 1
     }
   }
   if start < text.length() {
-    segments.push(text[start:].to_string())
+    segments.push(text[start:].to_owned())
   }
   segments
 }
@@ -68,5 +68,5 @@ fn ends_with_slash(text : String) -> Bool {
 
 ///|
 fn is_windows_abs(pathname : String) -> Bool {
-  pathname lexmatch? "^[a-zA-Z]:[\\/]"
+  pathname =~ re"^[a-zA-Z]:[\\/]"
 }

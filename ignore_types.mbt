@@ -7,19 +7,19 @@ pub struct IgnoreRule {
   anchored : Bool
   has_slash : Bool
   segments : Array[String]
-} derive(Show, Eq)
+} derive(Debug, Eq)
 
 ///|
 pub struct MatchResult {
   ignored : Bool
   unignored : Bool
   rule : IgnoreRule?
-} derive(Show, Eq)
+} derive(Debug, Eq)
 
 ///|
 pub struct IgnoreOptions {
   allow_relative_paths : Bool
-} derive(Show, Eq)
+} derive(Debug, Eq)
 
 ///|
 pub struct Ignore {

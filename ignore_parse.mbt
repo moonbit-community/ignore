@@ -14,17 +14,17 @@ fn parse_rule(line0 : String) -> IgnoreRule? {
   }
 
   let mut pattern = if line.has_prefix("\\#") {
-    line[1:].to_string()
+    line[1:].to_owned()
   } else {
     line
   }
 
   let mut negative = false
   if pattern.has_prefix("\\!") {
-    pattern = pattern[1:].to_string()
+    pattern = pattern[1:].to_owned()
   } else if pattern.has_prefix("!") {
     negative = true
-    pattern = pattern[1:].to_string()
+    pattern = pattern[1:].to_owned()
   }
 
   if pattern.is_empty() {
@@ -34,13 +34,13 @@ fn parse_rule(line0 : String) -> IgnoreRule? {
   let mut anchored = false
   if pattern.has_prefix("/") {
     anchored = true
-    pattern = pattern[1:].to_string()
+    pattern = pattern[1:].to_owned()
   }
 
   let mut directory_only = false
   if ends_with_slash(pattern) {
     directory_only = true
-    pattern = pattern[:-1].to_string()
+    pattern = pattern[:pattern.length() - 1].to_owned()
   }
 
   let has_slash = pattern.find("/") is Some(_)
@@ -87,7 +87,7 @@ fn trim_bom(line : String) -> String {
     return line
   }
   if line.code_unit_at(0) == 0xFEFF {
-    return line[1:].to_string()
+    return line[1:].to_owned()
   }
   line
 }
@@ -126,7 +126,7 @@ fn normalize_trailing_spaces(line : String) -> String {
   if slash_count % 2 == 1 {
     "\{line[:end_ - 1]} "
   } else {
-    line[:end_].to_string()
+    line[:end_].to_owned()
   }
 }
 
