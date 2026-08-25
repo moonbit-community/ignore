@@ -63,7 +63,7 @@ fn parse_rule(line0 : String) -> IgnoreRule? {
 ///|
 fn split_lines(text : String) -> Array[String] {
   let lines = []
-  let buf = StringBuilder::new(size_hint=text.length())
+  let buf = StringBuilder(size_hint=text.length())
 
   for i in 0..<text.length() {
     let ch = text.code_unit_at(i)

@@ -1,6 +1,6 @@
 ///|
 fn normalize_path(pathname : String) -> String {
-  let buf = StringBuilder::new(size_hint=pathname.length())
+  let buf = StringBuilder(size_hint=pathname.length())
   for i in 0..<pathname.length() {
     let ch = pathname.code_unit_at(i)
     if ch == '\\'.to_int().to_uint16() {
@@ -50,7 +50,7 @@ fn join_segments(segments : Array[String], start : Int, end_ : Int) -> String {
     return ""
   }
 
-  let buf = StringBuilder::new(size_hint=0)
+  let buf = StringBuilder(size_hint=0)
   for i in start..<end_ {
     if i > start {
       buf.write_char('/')
