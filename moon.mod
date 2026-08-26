@@ -1,4 +1,4 @@
-name = "sennenki/ignore"
+name = "moonbit-community/ignore"
 
 version = "0.0.1"
 

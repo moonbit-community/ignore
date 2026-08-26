@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "sennenki/ignore"
+package "moonbit-community/ignore"
 
 import {
   "moonbitlang/core/debug",
