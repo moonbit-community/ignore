@@ -8,7 +8,7 @@ import {
 
 readme = "README.mbt.md"
 
-repository = "https://github.com/zvmsbackend/ignore"
+repository = "https://github.com/moonbit-community/ignore"
 
 license = "Apache-2.0"
 
